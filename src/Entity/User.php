@@ -99,11 +99,6 @@ class User implements UserInterface
      */
     private $tel;
 
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Order", mappedBy="user", cascade={"persist", "remove"})
-     */
-    private $panier;
-
   
     public function __construct()
     {
@@ -304,20 +299,5 @@ return $this;
         return $this;
     }
 
-    public function getPanier(): ?Order
-    {
-        return $this->panier;
-    }
-
-    public function setPanier(Order $panier): self
-    {
-        $this->panier = $panier;
-
-        // set the owning side of the relation if necessary
-        if ($panier->getUser() !== $this) {
-            $panier->setUser($this);
-        }
-
-        return $this;
-    }
+ 
 }

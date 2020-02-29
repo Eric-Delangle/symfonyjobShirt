@@ -42,6 +42,17 @@
         {% else %}
             <script>document.getElementById('admin').style.display ='none';</script>
         {% endif %}
+        <!-- script d'apparition du message en page d'accueil -->
 
+        <script>document.getElementById('info').style.display ='none';</script>
+        <script>
+        window.onload = function() {
+            setTimeout(function()
+            {
+            document.getElementById("info").style.display = "block";
+            }, 5000);
+        }
+        </script>
+        <!-- fin de script -->
     </body>
 </html>

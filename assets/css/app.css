@@ -14,6 +14,18 @@ body {
     background-color: #137764!important;
 }
 
+#info {
+  
+    width: 40%;
+    height: 35px;
+    background-color: #d33d32;
+    color: white;
+    margin: 20px auto;
+   padding: 0 auto;
+    font-size: 1.5em;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
 
 .center {
     text-align: center;
@@ -32,12 +44,31 @@ body {
     color: #137764!important;
 }
 
+/* logo et intro */
+
+#logoIntro {
+    
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
 .logo {
     width: 150px;
     height: 200px;
     margin-left: 0px;
     margin-top: 20px;
 }
+
+.shad {
+    text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+
+.dollar {
+    font-size: 3em;
+    font-family: arial!important;
+  }
 
 .brown {
     background-color: #a77c53;
@@ -144,13 +175,6 @@ i:hover {
     background-color: #ffffff !important;
 }
 
-/* logo et intro */
-
-#logoIntro {
-    width: 80%;
-    margin: -50px auto;
-    text-align: center;
-}
 
 /* les produits */
 
