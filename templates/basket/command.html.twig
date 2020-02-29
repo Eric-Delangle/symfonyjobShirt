@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User{% endblock %}
+
+{% block body %}
+<div class="container top">
+	<h1 class="center white"><i class="fas fa-credit-card red"></i> Votre commande</h1>
+	<br>
+	<div class="container">
+		<a href="{{ path('home') }}" class="list white font"><i class="fas fa-door-open red"></i> Retour a l'accueil</a>
+		<a href="{{ path('basket_index') }}" class="list white font"><i class="fas fa-shopping-basket red"></i> Votre panier</a>
+		{% if app.user %}
+			<a href="{{ path('user_show', {'id': app.user.id}) }}" class="list white font"><i class="fas fa-user red"></i> Votre compte</a>
+		{% endif %}
+	</div>
+	<br>
+	<div class="container">
+<h1>et maintenant...</h1>
+</div>
+{% endblock %}

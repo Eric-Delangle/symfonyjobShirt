@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>jobShirt</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="Mon template ecommerce">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <!-- CSS PERSO -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('build/css/app.css') }}"/>
+        <!-- CSS BOOTSTRAP-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+        {% if app.user %}
+            <script>document.getElementById('inscription').style.display ='none';</script>
+            <script>document.getElementById('connexion').style.display ='none';</script>
+        
+        {% else %}
+            <script>document.getElementById('inscription').style.display ='block';</script>
+            <script>document.getElementById('connexion').style.display ='block';</script>
+            
+            <script>document.getElementById('deconnexion').style.display ='none';</script>
+            <script>document.getElementById('espace_membre').style.display ='none';</script>
+
+        {% endif %}
+
+        {% if is_granted('ROLE_ADMIN') %}
+            <script>document.getElementById('admin').style.display ='block';</script>
+        {% else %}
+            <script>document.getElementById('admin').style.display ='none';</script>
+        {% endif %}
+
+    </body>
+</html>

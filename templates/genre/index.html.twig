@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1 class="center white">{{ category.name }}</h1>
+<br>
+<div class="container white"> 
+	<table class="">
+		<thead>
+			<tr>
+				<th>Nom</th>
+				<th>Description</th>
+				<th>Prix</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				{% if product %}
+				{% for prod in product %}
+					<td>{{ prod.name }}</td>
+					<td>{{ prod.description | raw }}
+						<img src="{{ asset(['images/products/', prod.picture]|join) }} ">
+						<button class="btn btn-success green_link"><a href="{{ path('basket_add', {'id': prod.id}) }}" class="white">Ajouter</a></button>
+					</td>
+					<td>{{ prod.price }} €</td>
+					</tr>
+				{% endfor %}
+				{% else %}
+					<tr>
+					<td colspan="3">Aucun produit enregistré.</td>
+					</tr>
+				{% endif %}
+			</tbody>
+		</table>
+		<button class="btn btn-success"><a href="{{ path('home') }}" class="white">Retour</a></button>
+	</div>
+{% endblock %}

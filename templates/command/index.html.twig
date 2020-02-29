@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User{% endblock %}
+
+{% block body %}
+<div class="container top">
+	<h1 class="center white"><i class="fas fa-credit-card red"></i> Votre commande</h1>
+	<br>
+	<div class="container">
+		<a href="{{ path('home') }}" class="list white font"><i class="fas fa-door-open red"></i> Retour a l'accueil</a>
+		<a href="{{ path('basket_index') }}" class="list white font"><i class="fas fa-shopping-basket red"></i> Votre panier</a>
+		{% if app.user %}
+			<a href="{{ path('user_show', {'id': app.user.id}) }}" class="list white font"><i class="fas fa-user red"></i> Votre compte</a>
+		{% endif %}
+	</div>
+	<br>
+	<div class="container white">
+            {% if app.user %}
+                <h2>Votre adresse de livraison:</h2>
+                    <table class="table white">
+                        <thead>
+                            <tr>
+                                <th>Prénom</th>
+                                <th>Nom</th>
+                                <th>Numéro</th>
+                                <th>Rue</th>
+                                <th>Code postal</th>
+                                <th>Ville</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ app.user.firstName }}</td>
+                                <td>{{ app.user.lastName }}</td>
+                                {% if app.user.numero %}
+                                    <td>{{ app.user.numero }}</td>
+                                    <td>{{ app.user.rue }}</td>
+                                    <td>{{ app.user.codePostal }}</td>
+                                    <td>{{ app.user.ville }}</td>
+                                {% else %}
+                                    <p>Vous devez compléter votre profil.</p>
+                                {% endif %}   
+                            </tr>
+                        </tbody>
+                    </table>
+                {% else %}
+                    <p>Vous n'êtes pas connécté(e)</p>
+                    <a href="{{ path('security_login') }}" id="connexion" class="list white" class="green"><i class="fas fa-door-open red"></i>&nbsp;Connexion</a>
+		            <a href="{{ path('security_registration') }}" id="inscription" class="list white"><i class="fas fa-user red"></i>&nbsp;Inscription</a>
+                {% endif %}
+</div>
+<hr>
+<div class="container top">
+	<div class="container white">
+    {% if items | length > 0 %}
+    <h2>Votre panier:</h2>
+		{% for item in items %}
+			<table class="table bordure brown">
+				<thead>
+					<th>Nom</th>
+					<th>Image</th>
+					<th>Prix</th>
+					<th>Quantité</th>
+					<th>Total</th>
+					<th></th>
+				</thead>
+				<tbody>
+					<td>{{ item.product.name }}</td>
+					<td><img src="{{ asset(['images/products/', item.product.picture]|join) }} "></td>
+					<td>{{ item.product.price }} €</td>
+					<td>{{ item.quantity }}</td>
+					<td>{{ item.product.price * item.quantity }} €</td>
+					<td>
+						<a href="{{ path('basket_remove', {'id': item.product.id}) }}" class="btb btn-danger-sm">
+							<i class="fas fa-trash red"></i>
+						</a>
+					</td>	
+					{% endfor %}
+				</tbody>
+				<tfoot class="font">
+					<tr>
+						<td colspan="3" class="text-right">Total :</td>
+						<td>{{ total }} €</td>
+						<td></td>
+					</tr>
+				</tfoot>
+			</table>
+			<button class="btn btn-info"><a href="{{ path('command_pay') }}" class="list white">Paiement</a></button>
+	{% else %}
+		<p>Votre panier est vide.</p>
+	{% endif %}
+	</div>
+	<div class="container">
+		
+	</div>
+    </div>
+{% endblock %}

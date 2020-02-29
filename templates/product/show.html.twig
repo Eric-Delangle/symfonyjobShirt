@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+	<div class="container white">
+		<h1 class="center white">{{ product.name }}</h1>
+		<br>
+		<table class="">
+			<thead>
+				<tr>
+					<th>Categorie</th>
+					<th>Description</th>
+					<th>Prix</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						
+							{% for categorie in product.categories %}
+								{{ categorie.name }} 
+							{% endfor %}
+						
+					</td>
+	
+					<td>{{ product.description | raw }}
+						<img src="{{ asset(['images/products/', product.picture]|join) }} ">
+						<button class="btn btn-info white"><a href="{{ path('basket_add', {'id': product.id}) }}" class="list white">Ajouter</a></button>
+					</td>
+					<td>{{ product.price }} €</td>
+				</tr>
+			</tbody>
+		</table>
+			<button class="btn btn-success white"><a href="{{ path('home') }}" class="list white">Retour</a></button>
+		</div>
+{% endblock %}

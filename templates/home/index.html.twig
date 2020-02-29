@@ -1,0 +1,105 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<!-- Section logo et presentation -->
+<section id="logoIntro">
+	<div class="jumbotron green">
+		<div><img src="/images/logo3.png" alt="logo" class="logo"></div>
+		<p class="police slogan">Job<span class="red gros">$</span>hirt les vétements qui vous trouvent du boulot !</p>
+	</div>
+</section>
+<!-- Section compte -->
+<section id="account">
+	<div class="account font">
+		<p style="display: flex;"><a href="{{ path('security_login') }}" id="connexion" class="list white" class="green"><i class="fas fa-door-open red"></i>&nbsp;Connexion</a>
+		<a href="{{ path('security_registration') }}" id="inscription" class="list white"><i class="fas fa-user red"></i>&nbsp;Inscription</a>
+		<a href="{{ path('basket_index') }}" id="panier" class="list white"><i class="fas fa-shopping-basket red"></i>&nbsp;Panier</a></p>
+	</div>
+		{% if app.user %}
+		<h1 class="center white">Bonjour {{ app.user.firstName|title }}</h1>
+		<br>
+		<div class="container account_link font">
+			<ul class="account">
+				<li><a href="{{ path('user_show', {'id': app.user.id}) }}" class="list white"><i class="fas fa-user red"></i> Votre compte</a></li>
+				<li><a class="list white" id="admin" href="#" ><i class="fas fa-edit red"></i> Administration</a></li>
+				<li><a href="{{ path('security_logout') }}" id="deconnexion" class="list white"><i class="fas fa-door-closed red"></i>&nbsp;Déconnexion</a></li>
+			</ul>
+		</div>
+	{% endif %}
+
+</section>
+<!-- Section produits -->
+<section id="products" class="container font">
+	<div class="products brown">
+		<p class="police_prod">Les pro<span class="red">d</span>uits</p>
+		<div class="genre">
+			<ul class="account">
+				{% for prod in product %}
+					<li><a href="{{ path('product_category', {'id': 2}) }}" id="femme" class="list"><i class="fas fa-female"></i>&nbsp;Femme</a></li>
+					<li><a href="{{ path('product_category', {'id': 1}) }}" id="homme" class="list"><i class="fas fa-male"></i>&nbsp;Homme</a></li>
+					<li><a href="{{ path('product_category', {'id': 3}) }}" id="accessoires" class="list"><i class="fas fa-suitcase"></i>&nbsp;Accessoires</a></li>
+				{% endfor %}
+			</ul>
+		</div>
+		<br>
+		<div class="container brown">
+			<!-- ici tous les produits -->
+			<div class="rayons center">
+				{% for prod in product %}
+					<div class="container">
+						{{ prod.name }}
+						{{ prod.description }}
+						<img src="{{ asset(['images/products/', prod.picture]|join) }} ">
+						<button class="btn green_link"><a href="{{ path('product_show', {'id': prod.id}) }}" class="white">Détails</a></button>
+					</div>
+				{% endfor %}
+				<br>
+		</div>
+	</div>
+	<div class="pagination center top">
+		{{ knp_pagination_render (product)}}
+	</div>
+</div>
+	</div>
+</section>
+<!-- Section contact -->
+<section id="contact" class="container font">
+	<div class="jumbotron" style="background-color: white;">
+		<p class="police_prod white">Con<span class="red">t</span>act</p>
+	
+        <div class="col-md-offset-2 col-md-8 center brown">
+          <ul class="social-network">
+            <li><a href="#">
+				<span class="fa-stack fa-2x">
+					<i class="fa fa-circle fa-stack-2x"></i>
+					<i class="fab fa-facebook fa-stack-1x fa-inverse green"></i>
+				</span></a>
+            </li>
+            <li><a href="#">
+				<span class="fa-stack fa-2x">
+					<i class="fa fa-circle fa-stack-2x"></i>
+					<i class="fab fa-pinterest fa-stack-1x fa-inverse green"></i>
+				</span></a>
+			</li>
+			<li><a href="#">
+				<span class="fa-stack fa-2x">
+					<i class="fa fa-circle fa-stack-2x"></i>
+					<i class="fas fa-envelope-square fa-stack-1x fa-inverse green"></i></i>
+				</span></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+</section>
+<!-- Section footer -->
+<section id="footer" class="brown">
+
+</section>
+
+{% if app.user %}
+	<script>document.getElementById('inscription').style.display ='none';</script>
+	<script>document.getElementById('connexion').style.display ='none';</script>
+{% else %}
+	<script>document.getElementById('deconnexion').style.display ='none';</script>
+{% endif %}
+
+{% endblock %}

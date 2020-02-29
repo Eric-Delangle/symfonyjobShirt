@@ -1,0 +1,224 @@
+@font-face {
+    font-family: '3dumbregular';
+    src: url('/fonts/3dumb-webfont.eot');
+    src: url('/fonts/3dumb-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/3dumb-webfont.woff2') format('woff2'),
+         url('/fonts/3dumb-webfont.woff') format('woff'),
+         url('/fonts/3dumb-webfont.ttf') format('truetype'),
+         url('/fonts/3dumb-webfont.svg#3dumbregular') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+
+body {
+    background-color: #137764!important;
+}
+
+
+.center {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.police {
+    font-family: '3dumbregular';
+    font-size: 2em;
+    color: white;
+}
+
+.police_prod {
+    font-family: '3dumbregular';
+    font-size: 2em;
+    color: #137764!important;
+}
+
+.logo {
+    width: 150px;
+    height: 200px;
+    margin-left: 0px;
+    margin-top: 20px;
+}
+
+.brown {
+    background-color: #a77c53;
+}
+
+.green {
+    background-color: #137764!important;
+}
+
+.green_link {
+    background-color: #137764!important;
+}
+
+.green_link:hover {
+    background-color: #d33d32!important;
+}
+
+.red {
+    color: #d33d32!important;
+}
+
+.red_link {
+    color: #d33d32!important;
+}
+
+.red_link:hover {
+    color: #a77c53 !important;
+}
+
+.slogan {
+    font-size: 2.5em;
+    margin-top: -60px;
+}
+
+/* liens du compte */
+
+.list {
+    list-style: none;
+    text-decoration: none;
+    color: black;
+    padding: 15px;
+}
+
+.list:hover {
+    list-style: none;
+    text-decoration: none;
+    color: #d33d32!important;
+}
+
+.account {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    list-style: none;
+    text-decoration: none;
+    padding: 0 30px;
+    text-align: center;
+}
+
+.font {
+    font-size: 1.2em;
+}
+
+.top {
+    margin-top: 10px;
+}
+
+.gros {
+    font-size: 2em;
+}
+
+.account_link {
+    display: flex;
+}
+
+.white {
+    color: white;
+}
+
+
+
+i:hover {
+    color: #ffffff;
+}
+
+/* Couleurs des boutons */
+
+.btn-success {
+    background-color: #a77c53 !important;
+    border: none !important;
+}
+
+.btn-info {
+    background-color: #d33d32 !important;
+    border: none !important;
+}
+
+.btn-primary {
+    background-color: #c05320 !important;
+    border: none !important;
+}
+
+.btn-success:hover, .btn-info:hover, .btn-primary:hover {
+    background-color: #ffffff !important;
+}
+
+/* logo et intro */
+
+#logoIntro {
+    width: 80%;
+    margin: -50px auto;
+    text-align: center;
+}
+
+/* les produits */
+
+.products {
+    width: 70%;
+    margin: 50px auto;
+    text-align: center;
+    background-color: white!important;
+    border-radius: 10px;
+}
+
+/* pagination */
+
+.pagination {
+    margin-left: 70px!important;
+}
+
+.page-link {
+    color: black!important;
+}
+
+.page-item.active .page-link {
+    color: white!important;
+    background-color: #137764!important;
+    border-color: #137764!important;
+}
+
+/* contact */
+
+#contact {
+    width: 30%;
+    margin: 50px auto;
+    text-align: center;
+}
+
+ul.social-network {	
+	margin: 0;
+	margin-left:0;
+	padding-left: 0;
+    list-style: none;
+    display: flex;
+}
+
+ul.social-network li {
+	display: inline;
+    margin: 5px 5px;
+    color: #137764!important;
+}
+
+.social-network i:hover {
+    color: #d33d32!important;
+}
+
+ul.social-network li a:hover span .fa-circle {
+	color: #2b2b2b;
+}
+
+.bordure {
+    
+    border-radius: 20px;
+    
+    }
+
+/* footer */
+
+#footer {
+    width: 100%;
+    
+    text-align: center;
+    background-color: #137764;
+}
